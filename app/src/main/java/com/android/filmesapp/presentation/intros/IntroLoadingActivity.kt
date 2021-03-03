@@ -7,12 +7,9 @@ import android.os.Handler
 import android.view.View
 import android.view.WindowManager
 import com.android.filmesapp.R
-import com.android.filmesapp.presentation.MainActivity
 
 @Suppress("DEPRECATION")
 class IntroLoadingActivity : AppCompatActivity() {
-
-    private lateinit var handler: Handler
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -25,7 +22,7 @@ class IntroLoadingActivity : AppCompatActivity() {
     }
 
     private fun openLoginActivity(){
-        var intent = Intent(this, MainActivity::class.java)
+        var intent = Intent(this, SlideActivity::class.java)
         startActivity(intent)
     }
 

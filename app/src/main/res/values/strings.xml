@@ -3,4 +3,9 @@
 
     <!-- Intros -->
     <string name="imagem_capa">Imagem da capa contendo logo do Netflix.</string>
+    <string name="intro_text1">Assista a títulos originais e imperdíveis.</string>
+    <string name="intro_text2">Diversão ilimitada em suas mãos.</string>
+    <string name="intro_text3">Preparado? Vamos nessa!</string>
+    <string name="intro_button">Let\'s Go</string>
+    <string name="intro_button_description">Botão iniciar</string>
 </resources>
