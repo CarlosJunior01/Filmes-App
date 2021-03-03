@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/black_80">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/black_80"
+        tools:context=".presentation.films.FilmsDetails">
+
+        <ImageView
+            android:id="@+id/imgCover"
+            android:layout_width="@dimen/default_size_400_dp"
+            android:layout_height="@dimen/default_size_500_dp"
+            android:layout_marginTop="@dimen/default_size_4_dp"
+            android:scaleType="centerCrop"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/filme1" />
+
+        <ImageView
+            android:id="@+id/imgBackArrow"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/default_size_8_dp"
+            android:layout_marginTop="@dimen/default_size_16_dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/ic_arrow_left" />
+
+        <ImageView
+            android:id="@+id/imgCast"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="@dimen/default_size_16_dp"
+            app:layout_constraintBottom_toBottomOf="@+id/imgBackArrow"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/imgBackArrow"
+            app:srcCompat="@drawable/ic_cast" />
+
+        <ImageView
+            android:id="@+id/imgPlay"
+            android:layout_width="@dimen/default_size_64_dp"
+            android:layout_height="@dimen/default_size_64_dp"
+            android:layout_marginTop="@dimen/default_size_24_dp"
+            app:layout_constraintEnd_toStartOf="@+id/imgStar"
+            app:layout_constraintStart_toEndOf="@+id/imgAddList"
+            app:layout_constraintTop_toBottomOf="@+id/imgCover"
+            app:srcCompat="@drawable/play" />
+
+        <ImageView
+            android:id="@+id/imgAddList"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/default_size_24_dp"
+            app:layout_constraintBottom_toBottomOf="@+id/imgPlay"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/imgPlay"
+            app:srcCompat="@drawable/icc_add_circle" />
+
+        <TextView
+            android:id="@+id/txtAddList"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/add_list"
+            android:textColor="@color/white"
+            app:layout_constraintEnd_toEndOf="@+id/imgAddList"
+            app:layout_constraintStart_toStartOf="@+id/imgAddList"
+            app:layout_constraintTop_toBottomOf="@+id/imgAddList" />
+
+        <ImageView
+            android:id="@+id/imgStar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="@dimen/default_size_24_dp"
+            app:layout_constraintBottom_toBottomOf="@+id/imgPlay"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/imgPlay"
+            app:srcCompat="@drawable/ic_star_border" />
+
+        <TextView
+            android:id="@+id/txtLike"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/like"
+            android:textColor="@color/white"
+            app:layout_constraintEnd_toEndOf="@+id/imgStar"
+            app:layout_constraintStart_toStartOf="@+id/imgStar"
+            app:layout_constraintTop_toBottomOf="@+id/imgStar" />
+
+        <TextView
+            android:id="@+id/txtDescription"
+            android:layout_width="@dimen/default_size_0_dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/default_size_24_dp"
+            android:justificationMode="inter_word"
+            android:text="@string/details_description"
+            android:textColor="@color/white"
+            android:textSize="@dimen/default_text_16_sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="@+id/imgStar"
+            app:layout_constraintStart_toStartOf="@+id/imgAddList"
+            app:layout_constraintTop_toBottomOf="@+id/imgPlay" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</androidx.core.widget.NestedScrollView>

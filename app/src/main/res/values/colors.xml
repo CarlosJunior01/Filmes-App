@@ -8,9 +8,9 @@
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
 
-    <color name="black100">#000000</color>
-    <color name="black80">#1a1a1a</color>
-    <color name="black50">#484848</color>
+    <color name="black_100">#000000</color>
+    <color name="black_80">#121212</color>
+    <color name="black_50">#484848</color>
     <color name="light_gray">#eeeeee</color>
     <color name="red">#FF0000</color>
     <color name="orange">#FF5722</color>

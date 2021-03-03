@@ -11,7 +11,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.FilmesApp">
-        <activity android:name=".presentation.films.FilmsActivity"></activity>
+        <activity android:name=".presentation.films.FilmsDetails"></activity>
+        <activity android:name=".presentation.films.FilmsActivity" />
         <activity android:name=".presentation.authentication.FormRegisterActivity" />
         <activity android:name=".presentation.authentication.FormLoginActivity" />
         <activity

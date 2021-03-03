@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!-- Dimens redesgin -->
+    <dimen name="default_size_0_dp">0dp</dimen>
+    <dimen name="default_size_4_dp">4dp</dimen>
+    <dimen name="default_size_8_dp">8dp</dimen>
+    <dimen name="default_size_10_dp">10dp</dimen>
+    <dimen name="default_size_11_dp">11dp</dimen>
+    <dimen name="default_size_12_dp">12dp</dimen>
+    <dimen name="default_size_15_dp">15dp</dimen>
+    <dimen name="default_size_16_dp">16dp</dimen>
+    <dimen name="default_size_19_dp">19dp</dimen>
+    <dimen name="default_size_21_dp">21dp</dimen>
+    <dimen name="default_size_22_dp">22dp</dimen>
+    <dimen name="default_size_24_dp">24dp</dimen>
+    <dimen name="default_size_25_dp">25dp</dimen>
+    <dimen name="default_size_27_dp">27dp</dimen>
+    <dimen name="default_size_36_dp">36dp</dimen>
+    <dimen name="default_size_56_dp">56dp</dimen>
+    <dimen name="default_size_64_dp">64dp</dimen>
+    <dimen name="default_size_80_dp">80dp</dimen>
+    <dimen name="default_size_108_dp">108dp</dimen>
+    <dimen name="default_size_152_dp">152dp</dimen>
+    <dimen name="default_size_205_dp">205dp</dimen>
+    <dimen name="default_size_400_dp">400dp</dimen>
+    <dimen name="default_size_500_dp">500dp</dimen>
+
+    <!-- Dimens text -->
+    <dimen name="default_text_2_sp">2sp</dimen>
+    <dimen name="default_text_15_sp">15sp</dimen>
+    <dimen name="default_text_16_sp">16sp</dimen>
+    <dimen name="default_text_19_sp">19sp</dimen>
+    <dimen name="default_text_20_sp">20sp</dimen>
+
+</resources>

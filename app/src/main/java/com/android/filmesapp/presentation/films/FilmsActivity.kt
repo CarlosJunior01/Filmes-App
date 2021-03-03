@@ -1,5 +1,7 @@
 package com.android.filmesapp.presentation.films
 
+import OnItemClickListener
+import addOnItemClickListener
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -7,6 +9,8 @@ import android.view.Menu
 import android.view.MenuItem
 import android.view.View
 import androidx.core.content.ContextCompat.startActivity
+import androidx.recyclerview.widget.GridLayoutManager
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.android.filmesapp.R
 import com.android.filmesapp.databinding.ActivityFilmsBinding
 import com.android.filmesapp.databinding.ActivityFormLoginBinding
@@ -21,9 +25,10 @@ class FilmsActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityFilmsBinding.inflate(layoutInflater)
         setContentView(binding.root)
-
-
+        setRecyclerView()
     }
+
+
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
         val inflate = menuInflater
@@ -44,6 +49,31 @@ class FilmsActivity : AppCompatActivity() {
     private fun OpenLoginActivity(){
         var intent = Intent(this, FormLoginActivity::class.java)
         startActivity(intent)
+    }
+
+    private fun setRecyclerView() {
+
+        val recyclerFilmsHorizontal= binding.recyclerViewHorizontal
+        recyclerFilmsHorizontal.adapter = FilmsAdapter(addFilms())
+        recyclerFilmsHorizontal.layoutManager = LinearLayoutManager(applicationContext, LinearLayoutManager.HORIZONTAL, false)
+
+        val recyclerFilmsVertical = binding.recyclerViewVertical
+        recyclerFilmsVertical.adapter = FilmsAdapter(addFilms())
+        recyclerFilmsVertical.layoutManager = GridLayoutManager(applicationContext, 3)
+
+        recyclerFilmsHorizontal.addOnItemClickListener(object: OnItemClickListener{
+            override fun onItemClicked(position: Int, view: View) {
+               FilmsDetail()
+                when{
+                    position == 0 -> FilmsDetail()
+                }
+            }
+        })
+    }
+
+    private fun FilmsDetail() {
+        val itent = Intent(this, FilmsDetails::class.java)
+        startActivity(itent)
     }
 
 
