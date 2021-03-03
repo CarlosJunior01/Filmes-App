@@ -5,6 +5,8 @@ import android.os.Bundle
 import android.view.View
 import com.android.filmesapp.R
 import com.android.filmesapp.presentation.authentication.FormLoginActivity
+import com.android.filmesapp.presentation.films.FilmsActivity
+import com.google.firebase.auth.FirebaseAuth
 import com.heinrichreimersoftware.materialintro.app.IntroActivity
 import com.heinrichreimersoftware.materialintro.slide.FragmentSlide
 
@@ -12,6 +14,7 @@ class SlideActivity : IntroActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         screenMode()
+        VerifyUserLogin()
 
         isButtonBackVisible = false
         isButtonNextVisible = false
@@ -49,5 +52,18 @@ class SlideActivity : IntroActivity() {
 
     private fun screenMode() {
         supportActionBar!!.hide()
+    }
+
+    private fun VerifyUserLogin(){
+        val userLogin = FirebaseAuth.getInstance().currentUser
+
+        if(userLogin != null){
+            OpenFilmesActivity()
+        }
+    }
+
+    private fun OpenFilmesActivity(){
+        var intent = Intent(this, FilmsActivity::class.java)
+        startActivity(intent)
     }
 }

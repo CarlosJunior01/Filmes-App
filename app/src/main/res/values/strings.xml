@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Netflix TMDB</string>
+    <string name="app_name">NetflixTMDB</string>
 
     <!-- Intros -->
     <string name="imagem_capa">Imagem da capa contendo logo do Netflix.</string>

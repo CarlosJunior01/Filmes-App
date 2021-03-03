@@ -8,17 +8,17 @@ import android.os.Bundle
 import android.view.View
 import android.view.inputmethod.InputMethodManager
 import android.widget.Toast
-import com.android.filmesapp.databinding.ActivityFormCadastroBinding
+import com.android.filmesapp.databinding.ActivityFormRegisterBinding
 import com.google.firebase.FirebaseNetworkException
 import com.google.firebase.auth.*
 
-class FormCadastroActivity : AppCompatActivity() {
+class FormRegisterActivity : AppCompatActivity() {
 
-    private lateinit var binding: ActivityFormCadastroBinding
+    private lateinit var binding: ActivityFormRegisterBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        binding = ActivityFormCadastroBinding.inflate(layoutInflater)
+        binding = ActivityFormRegisterBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
         binding.btnEntrar.setOnClickListener {
@@ -32,10 +32,10 @@ class FormCadastroActivity : AppCompatActivity() {
     private fun CadastrarUsuario(){
         var email = binding.edtEmail.text.toString()
         var senha = binding.edtSenha.text.toString()
-        var mensagem = binding.mensagem
+        var message = binding.mensagem
 
         if(email.isEmpty() || senha.isEmpty()){
-            mensagem.setText("Coloque o seu e-mail e sua senha!")
+            message.setText("Coloque o seu e-mail e sua senha!")
         } else{
             FirebaseAuth.getInstance().createUserWithEmailAndPassword(email, senha).addOnCompleteListener {
                 if (it.isSuccessful){
@@ -43,14 +43,14 @@ class FormCadastroActivity : AppCompatActivity() {
                     openLoginActivity()
                 }
             }.addOnFailureListener {
-                var erro = it
+                var error = it
 
                 when{
-                    erro is FirebaseAuthWeakPasswordException ->  mensagem.setText("Insira uma senha com no mínimo 6 caracteres!")
-                    erro is FirebaseAuthUserCollisionException ->  mensagem.setText("Email informado já possui cadastrado!")
-                    erro is FirebaseNetworkException ->  mensagem.setText("Sem conexão com a internet!")
-                    erro is FirebaseAuthInvalidCredentialsException ->  mensagem.setText("Digite um e-mail válido!")
-                    else ->  mensagem.setText("Erro ao cadastrar usuário!")
+                    error is FirebaseAuthWeakPasswordException ->  message.setText("Insira uma senha com no mínimo 6 caracteres!")
+                    error is FirebaseAuthUserCollisionException ->  message.setText("Email informado já possui cadastrado!")
+                    error is FirebaseNetworkException ->  message.setText("Sem conexão com a internet!")
+                    error is FirebaseAuthInvalidCredentialsException ->  message.setText("Digite um e-mail válido!")
+                    else ->  message.setText("Erro ao cadastrar usuário!")
                 }
             }
         }
