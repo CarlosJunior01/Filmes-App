@@ -1,7 +1,6 @@
 plugins {
     id 'com.android.application'
     id 'kotlin-android'
-    id 'kotlin-android-extensions'
     id 'kotlin-kapt'
 }
 
@@ -25,6 +24,10 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
     }
+
+    buildFeatures {
+        viewBinding true
+    }
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_1_8
         targetCompatibility JavaVersion.VERSION_1_8
@@ -32,10 +35,10 @@ android {
     kotlinOptions {
         jvmTarget = '1.8'
     }
-    viewBinding{
-        enabled = true
-    }
 }
+
+apply plugin: 'com.android.application'
+apply plugin: 'com.google.gms.google-services'
 
 ext {
     glideVersion    = "4.11.0"
@@ -69,6 +72,16 @@ dependencies {
     implementation "com.squareup.retrofit2:converter-moshi:$retrofitVersion"
     implementation "com.squareup.moshi:moshi-kotlin:$moshiVersion"
     kapt "com.squareup.moshi:moshi-kotlin-codegen:$moshiVersion"
+
+    // Import the Firebase BoM
+    implementation platform('com.google.firebase:firebase-bom:26.3.0')
+
+    // Declare the dependency for the Firebase SDK for Google Analytics
+    implementation 'com.google.firebase:firebase-analytics-ktx'
+
+    // For example, declare the dependencies for Firebase Authentication and Cloud Firestore
+    implementation 'com.google.firebase:firebase-auth-ktx'
+    implementation 'com.google.firebase:firebase-firestore-ktx'
 
     //Junit test
     testImplementation 'junit:junit:4.13.2'

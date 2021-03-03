@@ -11,9 +11,9 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.FilmesApp">
-        <activity android:name=".presentation.MainActivity"
-            android:launchMode="singleTop"
-            android:screenOrientation="portrait" />
+
+        <activity android:name=".presentation.authentication.FormCadastroActivity"/>
+        <activity android:name=".presentation.authentication.FormLoginActivity" />
 
         <activity
             android:name=".presentation.intros.SlideActivity"
@@ -30,6 +30,7 @@
                     android:screenOrientation="portrait" />
             </intent-filter>
         </activity>
+
     </application>
 
 </manifest>

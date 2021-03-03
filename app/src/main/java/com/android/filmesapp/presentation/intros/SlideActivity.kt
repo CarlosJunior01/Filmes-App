@@ -4,7 +4,7 @@ import android.content.Intent
 import android.os.Bundle
 import android.view.View
 import com.android.filmesapp.R
-import com.android.filmesapp.presentation.MainActivity
+import com.android.filmesapp.presentation.authentication.FormLoginActivity
 import com.heinrichreimersoftware.materialintro.app.IntroActivity
 import com.heinrichreimersoftware.materialintro.slide.FragmentSlide
 
@@ -42,7 +42,7 @@ class SlideActivity : IntroActivity() {
     }
 
     fun openNextActivity(view: View) {
-        val intent = Intent(this, MainActivity::class.java)
+        val intent = Intent(this, FormLoginActivity::class.java)
         startActivity(intent)
         finish()
     }
