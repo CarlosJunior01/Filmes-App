@@ -1,4 +1,4 @@
-package com.android.filmesapp.presenter
+package com.android.filmesapp.presentation
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
