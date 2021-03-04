@@ -11,10 +11,19 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.FilmesApp">
-        <activity android:name=".presentation.films.FilmsDetails"></activity>
-        <activity android:name=".presentation.films.FilmsActivity" />
-        <activity android:name=".presentation.authentication.FormRegisterActivity" />
-        <activity android:name=".presentation.authentication.FormLoginActivity" />
+        <activity android:name=".presentation.films.VideoActivity"></activity>
+        <activity
+            android:name=".presentation.films.FilmsDetails"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".presentation.films.FilmsActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".presentation.authentication.FormRegisterActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".presentation.authentication.FormLoginActivity"
+            android:screenOrientation="portrait" />
         <activity
             android:name=".presentation.intros.SlideActivity"
             android:screenOrientation="portrait" />
@@ -22,7 +31,9 @@
             android:name=".presentation.intros.IntroLoadingActivity"
             android:screenOrientation="portrait">
             <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
+                <action
+                    android:name="android.intent.action.MAIN"
+                    android:screenOrientation="portrait" />
 
                 <category
                     android:name="android.intent.category.LAUNCHER"

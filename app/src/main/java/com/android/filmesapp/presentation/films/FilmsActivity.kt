@@ -5,6 +5,7 @@ import addOnItemClickListener
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.view.Menu
 import android.view.MenuItem
 import android.view.View
@@ -16,6 +17,7 @@ import com.android.filmesapp.databinding.ActivityFilmsBinding
 import com.android.filmesapp.databinding.ActivityFormLoginBinding
 import com.android.filmesapp.presentation.authentication.FormLoginActivity
 import com.google.firebase.auth.FirebaseAuth
+import java.text.FieldPosition
 
 class FilmsActivity : AppCompatActivity() {
 
@@ -63,16 +65,18 @@ class FilmsActivity : AppCompatActivity() {
 
         recyclerFilmsHorizontal.addOnItemClickListener(object: OnItemClickListener{
             override fun onItemClicked(position: Int, view: View) {
-               FilmsDetail()
-                when{
-                    position == 0 -> FilmsDetail()
-                }
+               FilmsDetail(position)
+                //Log.i("Position", "##: " + position )
+//                when{
+//                    position == 0 -> FilmsDetail()
+//                }
             }
         })
     }
 
-    private fun FilmsDetail() {
+    private fun FilmsDetail(position: Int) {
         val itent = Intent(this, FilmsDetails::class.java)
+        itent.putExtra("selectedItem", position);
         startActivity(itent)
     }
 
