@@ -66,10 +66,6 @@ class FilmsActivity : AppCompatActivity() {
         recyclerFilmsHorizontal.addOnItemClickListener(object: OnItemClickListener{
             override fun onItemClicked(position: Int, view: View) {
                FilmsDetail(position)
-                //Log.i("Position", "##: " + position )
-//                when{
-//                    position == 0 -> FilmsDetail()
-//                }
             }
         })
     }

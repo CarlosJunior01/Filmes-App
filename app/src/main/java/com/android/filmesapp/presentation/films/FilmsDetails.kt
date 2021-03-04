@@ -30,6 +30,7 @@ class FilmsDetails : AppCompatActivity() {
             binding.imgStar.setImageResource(R.drawable.ic_star)
         }
 
+
         var itemSelected: Int? = null
         val extras = intent.extras
         if (extras != null) {
@@ -55,6 +56,12 @@ class FilmsDetails : AppCompatActivity() {
             11 -> coverPosition = cover.cover_12
         }
 
+        binding.imgPlay.setOnClickListener {
+            if (itemSelected != null) {
+                OpenVideoActivity(itemSelected)
+            }
+        }
+
         Glide.with(applicationContext)
             .load(coverPosition)
             .centerCrop()
@@ -69,18 +76,24 @@ class FilmsDetails : AppCompatActivity() {
 
         recyclerFilmsVertical.addOnItemClickListener(object : OnItemClickListener {
             override fun onItemClicked(position: Int, view: View) {
-                FilmsDetail()
+               // FilmsDetail()
             }
         })
     }
 
-    private fun FilmsDetail() {
-        val itent = Intent(this, FilmsDetails::class.java)
-        startActivity(itent)
-    }
+//    private fun FilmsDetail() {
+//        val itent = Intent(this, FilmsDetails::class.java)
+//        startActivity(itent)
+//    }
 
     private fun OpenFilmsActivity() {
         var intent = Intent(this, FilmsActivity::class.java)
+        startActivity(intent)
+    }
+
+    private fun OpenVideoActivity(position: Int) {
+        var intent = Intent(this, VideoActivity::class.java)
+        intent.putExtra("selectedItem", position);
         startActivity(intent)
     }
 
