@@ -2,6 +2,7 @@ package com.android.filmesapp.presentation.films
 
 import OnItemClickListener
 import addOnItemClickListener
+import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import android.view.View
@@ -22,6 +23,15 @@ class FilmsDetails : AppCompatActivity() {
         screenMode()
         setRecyclerView()
 
+        val id = intent.getStringExtra("ID")
+        val title = intent.getStringExtra("TITLE")
+        val description = intent.getStringExtra("DESCRIPTION")
+        val releaseDate = intent.getStringExtra("RELEASE_DATE")
+        val poster = intent.getStringExtra("POSTER")
+
+
+        binding.txtDescription.setText(description)
+
         binding.imgBackArrow.setOnClickListener {
             OpenFilmsActivity()
         }
@@ -29,7 +39,6 @@ class FilmsDetails : AppCompatActivity() {
         binding.imgStar.setOnClickListener {
             binding.imgStar.setImageResource(R.drawable.ic_star)
         }
-
 
         var itemSelected: Int? = null
         val extras = intent.extras
@@ -56,35 +65,42 @@ class FilmsDetails : AppCompatActivity() {
             11 -> coverPosition = cover.cover_12
         }
 
+        Glide.with(applicationContext)
+            .load(coverPosition)
+            .into(binding.imgCover)
+
         binding.imgPlay.setOnClickListener {
             if (itemSelected != null) {
                 OpenVideoActivity(itemSelected)
             }
         }
 
-        Glide.with(applicationContext)
-            .load(coverPosition)
-            .centerCrop()
-            .into(binding.imgCover)
+        if (poster != null) {
+            Glide.with(applicationContext)
+                .load("https://image.tmdb.org/t/p/w500/${poster}")
+                .into(binding.imgCover)
+        }
     }
 
     private fun setRecyclerView() {
 
         val recyclerFilmsVertical = binding.recyclerViewVertical
-        recyclerFilmsVertical.adapter = FilmsAdapter(addFilms())
+        recyclerFilmsVertical.adapter = FilmsAdapterListOne(addFilms())
         recyclerFilmsVertical.layoutManager = GridLayoutManager(applicationContext, 3)
 
         recyclerFilmsVertical.addOnItemClickListener(object : OnItemClickListener {
             override fun onItemClicked(position: Int, view: View) {
-               // FilmsDetail()
+                FilmsDetail(position)
             }
         })
+
     }
 
-//    private fun FilmsDetail() {
-//        val itent = Intent(this, FilmsDetails::class.java)
-//        startActivity(itent)
-//    }
+    private fun FilmsDetail(position: Int) {
+        val itent = Intent(this, FilmsDetails::class.java)
+        itent.putExtra("selectedItem", position);
+        startActivity(itent)
+    }
 
     private fun OpenFilmsActivity() {
         var intent = Intent(this, FilmsActivity::class.java)
@@ -99,5 +115,19 @@ class FilmsDetails : AppCompatActivity() {
 
     private fun screenMode() {
         supportActionBar!!.hide()
+    }
+
+    companion object {
+        fun getStartIntent(
+            context: Context, id: Int, title: String, description: String, releaseDate: String, poster: String
+        ): Intent {
+            return Intent(context, FilmsDetails::class.java).apply {
+                putExtra("ID", id)
+                putExtra("TITLE", title)
+                putExtra("DESCRIPTION", description)
+                putExtra("RELEASE_DATE", releaseDate)
+                putExtra("POSTER", poster)
+            }
+        }
     }
 }
