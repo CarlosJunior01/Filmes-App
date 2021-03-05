@@ -52,4 +52,17 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/txt_title_two" />
 
+        <com.google.android.material.bottomnavigation.BottomNavigationView
+            android:id="@+id/bottom_menu"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/black_70"
+            app:itemIconTint="@color/white"
+            app:itemTextColor="@color/white"
+            app:itemTextAppearanceActive="@style/TextAppearance.AppCompat.SearchResult.Subtitle"
+            app:menu="@menu/bottom_menu"
+            app:layout_constraintBottom_toBottomOf="@+id/recyclerViewVertical"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"/>
+
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".presentation.films.FilmsActivity"
+    android:background="@color/black_80">
+
+    <TextView
+        android:id="@+id/txt_title_one"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:text="Search"
+        android:textColor="@color/white"
+        android:textSize="18dp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <SearchView
+        android:id="@+id/searchHeader"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/default_size_36_dp"
+        android:layout_marginStart="@dimen/default_size_16_dp"
+        android:layout_marginEnd="@dimen/default_size_16_dp"
+        android:background="@drawable/background_search_button"
+        android:contentDescription="@string/SpecSearchButton"
+        android:focusable="true"
+        android:iconifiedByDefault="false"
+        android:importantForAccessibility="yes"
+        android:orientation="horizontal"
+        android:queryBackground="@android:color/transparent"
+        android:queryHint="@string/searchButton"
+        android:textColorHint="@android:color/white"
+        app:layout_constraintBottom_toTopOf="@+id/divisor_one"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txt_title_one" />
+
+    <View
+        android:id="@+id/divisor_one"
+        android:layout_width="wrap_content"
+        android:layout_height="1dp"
+        android:background="@color/black_50"
+        android:layout_marginTop="@dimen/default_size_108_dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txt_title_one" />
+
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recyclerViewVertical"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:background="@color/black_80"
+        android:layout_marginTop="@dimen/default_size_36_dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/divisor_one" />
+
+    <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:id="@+id/bottom_menu"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/black_70"
+        app:itemIconTint="@color/white"
+        app:itemTextColor="@color/white"
+        app:itemTextAppearanceActive="@style/TextAppearance.AppCompat.SearchResult.Subtitle"
+        app:menu="@menu/bottom_menu"
+        app:layout_constraintBottom_toBottomOf="@+id/recyclerViewVertical"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"/>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

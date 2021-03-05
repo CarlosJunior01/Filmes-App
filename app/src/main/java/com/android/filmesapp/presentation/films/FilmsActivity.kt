@@ -9,12 +9,14 @@ import android.util.Log
 import android.view.Menu
 import android.view.MenuItem
 import android.view.View
+import android.widget.FrameLayout
 import androidx.lifecycle.ViewModelProviders
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.android.filmesapp.R
 import com.android.filmesapp.databinding.ActivityFilmsBinding
 import com.android.filmesapp.presentation.authentication.FormLoginActivity
+import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.firebase.auth.FirebaseAuth
 
 class FilmsActivity : AppCompatActivity() {
@@ -36,14 +38,31 @@ class FilmsActivity : AppCompatActivity() {
                     layoutManager = GridLayoutManager(applicationContext, 3)
                     setHasFixedSize(true)
                     adapter = FilmsAdapterListTwo(filmsList) {
-                        val intent = FilmsDetails.getStartIntent(this@FilmsActivity, it.id, it.title, it.overview, it.release_date, it.poster_path)
+                        val intent = FilmsDetails.getStartIntent(
+                            this@FilmsActivity,
+                            it.id,
+                            it.title,
+                            it.overview,
+                            it.release_date,
+                            it.poster_path
+                        )
                         this@FilmsActivity.startActivity(intent)
-                        Log.i("Test", "#: Click" )
+                        Log.i("Test", "#: Click")
                     }
                 }
             }
         })
         viewModel.getFilms()
+
+        var bottomNavigationView = binding.bottomMenu
+        bottomNavigationView.setSelectedItemId(R.id.nav_home)
+        bottomNavigationView.setOnNavigationItemSelectedListener { item ->
+            when (item.itemId) {
+                R.id.nav_search -> OpenSearchActivity()
+                R.id.nav_libs -> OpenFavoritActivity()
+                else -> OpenFilmsActivity()
+            }
+        }
     }
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
@@ -62,18 +81,19 @@ class FilmsActivity : AppCompatActivity() {
         return super.onOptionsItemSelected(item)
     }
 
-    private fun OpenLoginActivity(){
+    private fun OpenLoginActivity() {
         var intent = Intent(this, FormLoginActivity::class.java)
         startActivity(intent)
     }
 
     private fun setRecyclerView() {
 
-        val recyclerFilmsHorizontal= binding.recyclerViewHorizontal
+        val recyclerFilmsHorizontal = binding.recyclerViewHorizontal
         recyclerFilmsHorizontal.adapter = FilmsAdapterListOne(addFilms())
-        recyclerFilmsHorizontal.layoutManager = LinearLayoutManager(applicationContext, LinearLayoutManager.HORIZONTAL, false)
+        recyclerFilmsHorizontal.layoutManager =
+            LinearLayoutManager(applicationContext, LinearLayoutManager.HORIZONTAL, false)
 
-        recyclerFilmsHorizontal.addOnItemClickListener(object: OnItemClickListener{
+        recyclerFilmsHorizontal.addOnItemClickListener(object : OnItemClickListener {
             override fun onItemClicked(position: Int, view: View) {
                 FilmsDetail(position)
             }
@@ -84,6 +104,22 @@ class FilmsActivity : AppCompatActivity() {
         val itent = Intent(this, FilmsDetails::class.java)
         itent.putExtra("selectedItem", position)
         startActivity(itent)
+    }
+
+    private fun OpenFilmsActivity(): Boolean {
+        return true
+    }
+
+    private fun OpenSearchActivity(): Boolean {
+        val itent = Intent(this, SearchActivity::class.java)
+        startActivity(itent)
+        return true
+    }
+
+    private fun OpenFavoritActivity(): Boolean {
+        val itent = Intent(this, FavoritesActivity::class.java)
+        startActivity(itent)
+        return true
     }
 }
 

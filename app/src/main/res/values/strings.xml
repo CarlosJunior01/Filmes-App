@@ -9,6 +9,10 @@
     <string name="intro_button">Let\'s Go</string>
     <string name="intro_button_description">Botão iniciar</string>
 
+    <!-- FilmsActivity-->
+    <string name="SpecSearchButton">Pesquisar por um pokémon</string>
+    <string name="searchButton">Search</string>
+
     <!-- Details -->
     <string name="details_description">O bruxo Geralt, um caçador de monstros mutante, luta para encontrar seu lugar em um mundo no qual as pessoas costumam ser mais perversas do que os animais.</string>
     <string name="like">Like</string>
