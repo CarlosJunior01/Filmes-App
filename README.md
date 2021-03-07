@@ -3,6 +3,10 @@
 *******
 App Android Nativo escrito em Kotlin, consumindo API de filmes TMDB e processando resposta com retrofit2 e moschi. Projetado com padrão de arquitetura MVVM com divisão de responsabilidades, separação de conceitos e desacoplamento de camadas.
 *******
+![MovieApp~1](https://user-images.githubusercontent.com/9430430/110244557-0b58c900-7f3e-11eb-829e-ff616c0b66cb.gif)
+*******
+![MovieApp~3](https://user-images.githubusercontent.com/9430430/110245436-e7978200-7f41-11eb-9dc6-c02495ac65ab.gif)
+*******
 ![Movie_01](https://user-images.githubusercontent.com/9430430/110243198-1f99c780-7f38-11eb-9b66-4c11b21b9810.jpg)
 *******
 ![Movie_02](https://user-images.githubusercontent.com/9430430/110243200-21638b00-7f38-11eb-9e4a-e05c58115940.jpg)
