@@ -10,7 +10,7 @@ class MoviesRepositoryImp(private val service: MoviesApi) : MoviesRepository {
         val list = mutableListOf<Movies>()
         var limitMovies = 19
 
-        val moviesType = service.getFilmsCoroutine()
+        val moviesType = service.getTopRatedMovies()
         for (index: Int in 0..limitMovies) {
         val movies = Movies(
             id = moviesType.results[index].id,
