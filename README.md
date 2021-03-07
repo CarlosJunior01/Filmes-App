@@ -7,7 +7,7 @@ App Android Nativo escrito em Kotlin, consumindo API de filmes TMDB e processand
 *******
 ![Movie_02](https://user-images.githubusercontent.com/9430430/110243200-21638b00-7f38-11eb-9e4a-e05c58115940.jpg)
 *******
-### ESTRUTURA DOS PACOTES: MVVM ARCHITECTURE PATTERN:
+### ESTRUTURA DOS PACOTES: MVVM ARCHITECTURE PATTERN
 *******
 ### NETWORK LAYER
 > **DATA**
@@ -213,9 +213,5 @@ Sem dúvida, o principal objetivo de escolher a arquitetura MVVM é abstrair as 
 
 **Conclusão:** 
 Para este projeto foi escolhido o padrão de Arquitetura MVVM justamente por fazer uso um padrão de divisão de responsabilidades, com separação de conceitos, e camadas diferentes, nele temos o desacoplamento da camada de "Network" da camada de "Apresentação", facilitando assim a organização, clareza e entendimento de cada parte do projeto, facilitando e  possibilitando o trabalho em diferentes frentes de camadas desacopladas em um projeto mais organizado e flexível.
-
-
-
-
 
 
