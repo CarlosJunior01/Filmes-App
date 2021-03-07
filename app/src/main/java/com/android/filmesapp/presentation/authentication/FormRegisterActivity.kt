@@ -8,6 +8,7 @@ import android.os.Bundle
 import android.view.View
 import android.view.inputmethod.InputMethodManager
 import android.widget.Toast
+import com.android.filmesapp.R
 import com.android.filmesapp.databinding.ActivityFormRegisterBinding
 import com.google.firebase.FirebaseNetworkException
 import com.google.firebase.auth.*
@@ -30,12 +31,12 @@ class FormRegisterActivity : AppCompatActivity() {
     }
 
     private fun CadastrarUsuario(){
-        var email = binding.edtEmail.text.toString()
-        var senha = binding.edtSenha.text.toString()
-        var message = binding.mensagem
+        val email = binding.edtEmail.text.toString()
+        val senha = binding.edtSenha.text.toString()
+        val message = binding.mensagem
 
         if(email.isEmpty() || senha.isEmpty()){
-            message.setText("Coloque o seu e-mail e sua senha!")
+            message.setText(getString(R.string.coloqueEmailSenha))
         } else{
             FirebaseAuth.getInstance().createUserWithEmailAndPassword(email, senha).addOnCompleteListener {
                 if (it.isSuccessful){
@@ -43,14 +44,14 @@ class FormRegisterActivity : AppCompatActivity() {
                     openLoginActivity()
                 }
             }.addOnFailureListener {
-                var error = it
+                val error = it
 
                 when{
-                    error is FirebaseAuthWeakPasswordException ->  message.setText("Insira uma senha com no mínimo 6 caracteres!")
-                    error is FirebaseAuthUserCollisionException ->  message.setText("Email informado já possui cadastrado!")
-                    error is FirebaseNetworkException ->  message.setText("Sem conexão com a internet!")
-                    error is FirebaseAuthInvalidCredentialsException ->  message.setText("Digite um e-mail válido!")
-                    else ->  message.setText("Erro ao cadastrar usuário!")
+                    error is FirebaseAuthWeakPasswordException ->  message.setText(getString(R.string.passwordException))
+                    error is FirebaseAuthUserCollisionException ->  message.setText(getString(R.string.collisionException))
+                    error is FirebaseNetworkException ->  message.setText(getString(R.string.networkException))
+                    error is FirebaseAuthInvalidCredentialsException ->  message.setText(getString(R.string.invalidCredentialsException))
+                    else ->  message.setText(getString(R.string.erroCadastrar))
                 }
             }
         }
@@ -67,7 +68,7 @@ class FormRegisterActivity : AppCompatActivity() {
         inputMethodManager.hideSoftInputFromWindow(view.windowToken, 0)
     }
     private fun openLoginActivity(){
-        var intent = Intent(this, FormLoginActivity::class.java)
+        val intent = Intent(this, FormLoginActivity::class.java)
         startActivity(intent)
     }
 

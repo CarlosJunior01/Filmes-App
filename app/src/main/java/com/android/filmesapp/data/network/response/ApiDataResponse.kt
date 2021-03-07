@@ -1,4 +1,4 @@
-package com.carlos.marvel.data.network.response
+package com.android.filmesapp.data.network.response
 
 import com.squareup.moshi.Json
 import com.squareup.moshi.JsonClass

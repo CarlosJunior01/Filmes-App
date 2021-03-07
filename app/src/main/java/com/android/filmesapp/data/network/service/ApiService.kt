@@ -1,17 +1,19 @@
-package com.carlos.marvel.data.network.service
+package com.android.filmesapp.data.network.service
 
 import retrofit2.Retrofit
 import retrofit2.converter.moshi.MoshiConverterFactory
 
 object ApiService {
 
-    private fun initRetrofit() : Retrofit {
-        return Retrofit.Builder()
-            .baseUrl("https://api.themoviedb.org/")
+   private const val BASE_URL = "https://api.themoviedb.org/"
+
+    private fun initRetrofit() : Retrofit = Retrofit.Builder()
+            .baseUrl(BASE_URL)
             .addConverterFactory(MoshiConverterFactory.create())
             .build()
-    }
 
-    val service: TMDBService = initRetrofit().create(TMDBService::class.java)
-
+    val service: MoviesApi = initRetrofit().create(MoviesApi::class.java)
 }
+
+
+

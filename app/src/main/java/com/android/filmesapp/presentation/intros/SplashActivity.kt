@@ -3,27 +3,36 @@ package com.android.filmesapp.presentation.intros
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.os.Handler
 import android.view.View
 import android.view.WindowManager
 import com.android.filmesapp.R
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.delay
+import kotlinx.coroutines.launch
 
 @Suppress("DEPRECATION")
-class IntroLoadingActivity : AppCompatActivity() {
+class SplashActivity : AppCompatActivity() {
+
+    companion object{
+        const val TRES_SEGUNDOS = 3000L
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_intro_loading)
         fullscreenMode()
 
-        Handler().postDelayed({
+        CoroutineScope(Dispatchers.Main).launch {
+            delay(TRES_SEGUNDOS)
             openLoginActivity()
-        },3000)
+        }
     }
 
     private fun openLoginActivity(){
-        var intent = Intent(this, SlideActivity::class.java)
+        val intent = Intent(this, SlideActivity::class.java)
         startActivity(intent)
+        finish()
     }
 
     private fun fullscreenMode() {

@@ -1,6 +1,6 @@
 package com.android.filmesapp.data.model
 
-data class FilmsApi (
+data class Movies (
     val backdrop_path:     String,
     val id:                Int,
     val original_language: String,

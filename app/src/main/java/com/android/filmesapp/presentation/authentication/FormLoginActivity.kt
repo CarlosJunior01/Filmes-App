@@ -4,13 +4,12 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Toast
+import com.android.filmesapp.R
 import com.android.filmesapp.databinding.ActivityFormLoginBinding
-import com.android.filmesapp.presentation.films.FilmsActivity
+import com.android.filmesapp.presentation.movies.FilmsActivity
 import com.google.firebase.FirebaseNetworkException
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseAuthInvalidCredentialsException
-import com.google.firebase.auth.FirebaseAuthUserCollisionException
-import com.google.firebase.auth.FirebaseAuthWeakPasswordException
 
 class FormLoginActivity : AppCompatActivity() {
 
@@ -42,12 +41,12 @@ class FormLoginActivity : AppCompatActivity() {
     }
 
     private fun OpenRegisterActivity(){
-        var intent = Intent(this, FormRegisterActivity::class.java)
+        val intent = Intent(this, FormRegisterActivity::class.java)
         startActivity(intent)
     }
 
     private fun OpenFilmesActivity(){
-        var intent = Intent(this, FilmsActivity::class.java)
+        val intent = Intent(this, FilmsActivity::class.java)
         startActivity(intent)
     }
 
@@ -57,7 +56,7 @@ class FormLoginActivity : AppCompatActivity() {
         val message = binding.mensagem
 
         if(email.isEmpty() || password.isEmpty()){
-            message.setText("Preencha todos os campos!")
+            message.setText(getString(R.string.preenchaTodosCampos))
         }else{
             AuthenticateUser()
         }
@@ -70,16 +69,16 @@ class FormLoginActivity : AppCompatActivity() {
 
         FirebaseAuth.getInstance().signInWithEmailAndPassword(email, password).addOnCompleteListener{
             if(it.isSuccessful){
-                Toast.makeText(this, "Login Efetuado Com Sucesso!", Toast.LENGTH_SHORT).show()
+                Toast.makeText(this, getString(R.string.loginEfetuadoSucesso), Toast.LENGTH_SHORT).show()
                 OpenFilmesActivity()
             }
         }.addOnFailureListener{
-            var error = it
+            val error = it
 
             when{
-                error is FirebaseAuthInvalidCredentialsException ->  message.setText("E-mail ou senha incorretos!")
-                error is FirebaseNetworkException ->  message.setText("Sem conexão com a internet!")
-                else ->  message.setText("Erro ao logar usuário!")
+                error is FirebaseAuthInvalidCredentialsException ->  message.setText(getString(R.string.emailSenhaIncorretos))
+                error is FirebaseNetworkException ->  message.setText(getString(R.string.semConexaoInternet))
+                else ->  message.setText(getString(R.string.erroLogarUsuario))
             }
         }
     }

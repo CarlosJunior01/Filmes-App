@@ -11,16 +11,16 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.FilmesApp">
-        <activity android:name=".presentation.films.FavoritesActivity"></activity>
-        <activity android:name=".presentation.films.SearchActivity" />
+        <activity android:name=".presentation.favorites.FavoritesActivity"></activity>
+        <activity android:name=".presentation.search.SearchActivity" />
         <activity
-            android:name=".presentation.films.VideoActivity"
+            android:name=".presentation.player.VideoActivity"
             android:screenOrientation="sensor" />
         <activity
-            android:name=".presentation.films.FilmsDetails"
+            android:name=".presentation.details.FilmsDetails"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".presentation.films.FilmsActivity"
+            android:name=".presentation.movies.FilmsActivity"
             android:screenOrientation="portrait" />
         <activity
             android:name=".presentation.authentication.FormRegisterActivity"
@@ -32,7 +32,7 @@
             android:name=".presentation.intros.SlideActivity"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".presentation.intros.IntroLoadingActivity"
+            android:name=".presentation.intros.SplashActivity"
             android:screenOrientation="portrait">
             <intent-filter>
                 <action

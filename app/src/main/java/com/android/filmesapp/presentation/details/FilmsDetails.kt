@@ -1,4 +1,4 @@
-package com.android.filmesapp.presentation.films
+package com.android.filmesapp.presentation.details
 
 import OnItemClickListener
 import addOnItemClickListener
@@ -7,9 +7,13 @@ import android.content.Intent
 import android.os.Bundle
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
+import androidx.lifecycle.ViewModelProviders
 import androidx.recyclerview.widget.GridLayoutManager
 import com.android.filmesapp.R
+import com.android.filmesapp.data.model.addFilms
 import com.android.filmesapp.databinding.ActivityFilmsDetailsBinding
+import com.android.filmesapp.presentation.movies.*
+import com.android.filmesapp.presentation.player.VideoActivity
 import com.bumptech.glide.Glide
 
 class FilmsDetails : AppCompatActivity() {
@@ -23,10 +27,7 @@ class FilmsDetails : AppCompatActivity() {
         screenMode()
         setRecyclerView()
 
-        val id = intent.getStringExtra("ID")
-        val title = intent.getStringExtra("TITLE")
         val description = intent.getStringExtra("DESCRIPTION")
-        val releaseDate = intent.getStringExtra("RELEASE_DATE")
         val poster = intent.getStringExtra("POSTER")
 
 
@@ -47,27 +48,15 @@ class FilmsDetails : AppCompatActivity() {
             itemSelected = value
         }
 
-        val cover = CoversStorage()
-        var coverPosition = cover.cover_01
+        val viewModel: DetailsViewModel = ViewModelProviders.of(this).get(DetailsViewModel::class.java)
 
-        when(itemSelected){
-            0 -> coverPosition = cover.cover_01
-            1 -> coverPosition = cover.cover_02
-            2 -> coverPosition = cover.cover_03
-            3 -> coverPosition = cover.cover_04
-            4 -> coverPosition = cover.cover_05
-            5 -> coverPosition = cover.cover_06
-            6 -> coverPosition = cover.cover_07
-            7 -> coverPosition = cover.cover_08
-            8 -> coverPosition = cover.cover_09
-            9 -> coverPosition = cover.cover_10
-            10 -> coverPosition = cover.cover_11
-            11 -> coverPosition = cover.cover_12
-        }
-
-        Glide.with(applicationContext)
-            .load(coverPosition)
-            .into(binding.imgCover)
+        viewModel.mCoverPosition.observe(this, {
+            it?.let { coverPosition ->
+                Glide.with(applicationContext)
+                    .load(coverPosition)
+                    .into(binding.imgCover)
+            }
+        })
 
         binding.imgPlay.setOnClickListener {
             if (itemSelected != null) {
@@ -79,13 +68,13 @@ class FilmsDetails : AppCompatActivity() {
             Glide.with(applicationContext)
                 .load("https://image.tmdb.org/t/p/w500/${poster}")
                 .into(binding.imgCover)
-        }
+        } else viewModel.getCover(itemSelected)
     }
 
     private fun setRecyclerView() {
 
         val recyclerFilmsVertical = binding.recyclerViewVertical
-        recyclerFilmsVertical.adapter = FilmsAdapterListOne(addFilms())
+        recyclerFilmsVertical.adapter = FilmsAdapterList(addFilms())
         recyclerFilmsVertical.layoutManager = GridLayoutManager(applicationContext, 3)
 
         recyclerFilmsVertical.addOnItemClickListener(object : OnItemClickListener {
@@ -93,7 +82,6 @@ class FilmsDetails : AppCompatActivity() {
                 FilmsDetail(position)
             }
         })
-
     }
 
     private fun FilmsDetail(position: Int) {
@@ -103,12 +91,12 @@ class FilmsDetails : AppCompatActivity() {
     }
 
     private fun OpenFilmsActivity() {
-        var intent = Intent(this, FilmsActivity::class.java)
+        val intent = Intent(this, FilmsActivity::class.java)
         startActivity(intent)
     }
 
     private fun OpenVideoActivity(position: Int) {
-        var intent = Intent(this, VideoActivity::class.java)
+        val intent = Intent(this, VideoActivity::class.java)
         intent.putExtra("selectedItem", position);
         startActivity(intent)
     }
@@ -119,13 +107,10 @@ class FilmsDetails : AppCompatActivity() {
 
     companion object {
         fun getStartIntent(
-            context: Context, id: Int, title: String, description: String, releaseDate: String, poster: String
+            context: Context, description: String, poster: String
         ): Intent {
             return Intent(context, FilmsDetails::class.java).apply {
-                putExtra("ID", id)
-                putExtra("TITLE", title)
                 putExtra("DESCRIPTION", description)
-                putExtra("RELEASE_DATE", releaseDate)
                 putExtra("POSTER", poster)
             }
         }

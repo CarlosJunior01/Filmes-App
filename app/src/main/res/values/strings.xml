@@ -9,6 +9,19 @@
     <string name="intro_button">Let\'s Go</string>
     <string name="intro_button_description">Botão iniciar</string>
 
+    <!-- Authentication -->
+    <string name="passwordException">Insira uma senha com no mínimo 6 caracteres!</string>
+    <string name="collisionException">Email informado já possui cadastrado!</string>
+    <string name="networkException">Sem conexão com a internet!</string>
+    <string name="invalidCredentialsException">Digite um e-mail válido!</string>
+    <string name="erroCadastrar">Erro ao cadastrar usuário!</string>
+    <string name="coloqueEmailSenha">Coloque o seu e-mail e sua senha!</string>
+    <string name="preenchaTodosCampos">Preencha todos os campos!</string>
+    <string name="loginEfetuadoSucesso">Login Efetuado Com Sucesso!</string>
+    <string name="emailSenhaIncorretos">E-mail ou senha incorretos!</string>
+    <string name="semConexaoInternet">Sem conexão com a internet!</string>
+    <string name="erroLogarUsuario">Erro ao logar usuário!</string>
+
     <!-- FilmsActivity-->
     <string name="SpecSearchButton">Pesquisar por um pokémon</string>
     <string name="searchButton">Search</string>

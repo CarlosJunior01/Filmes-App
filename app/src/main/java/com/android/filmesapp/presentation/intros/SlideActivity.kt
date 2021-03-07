@@ -5,7 +5,7 @@ import android.os.Bundle
 import android.view.View
 import com.android.filmesapp.R
 import com.android.filmesapp.presentation.authentication.FormLoginActivity
-import com.android.filmesapp.presentation.films.FilmsActivity
+import com.android.filmesapp.presentation.movies.FilmsActivity
 import com.google.firebase.auth.FirebaseAuth
 import com.heinrichreimersoftware.materialintro.app.IntroActivity
 import com.heinrichreimersoftware.materialintro.slide.FragmentSlide
@@ -36,7 +36,7 @@ class SlideActivity : IntroActivity() {
 
         addSlide(
             FragmentSlide.Builder()
-                .background(android.R.color.holo_blue_dark)
+                .background(android.R.color.white)
                 .fragment(R.layout.intro_03)
                 .canGoForward(false)
                 .build()
@@ -63,7 +63,7 @@ class SlideActivity : IntroActivity() {
     }
 
     private fun OpenFilmesActivity(){
-        var intent = Intent(this, FilmsActivity::class.java)
+        val intent = Intent(this, FilmsActivity::class.java)
         startActivity(intent)
     }
 }
