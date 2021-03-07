@@ -11,11 +11,11 @@
         android:id="@+id/txt_title_one"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Mais Assistidos"
+        android:text="@string/filmes_recomendados"
         android:textColor="@color/white"
         android:textStyle="bold"
-        android:textSize="18dp"
-        android:layout_margin="4dp"
+        android:textSize="@dimen/default_text_18_sp"
+        android:layout_margin="@dimen/default_size_4_dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -24,7 +24,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@color/black_50"
-        android:layout_marginTop="4dp"
+        android:layout_marginTop="@dimen/default_size_4_dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/txt_title_one" />
@@ -33,10 +33,10 @@
         android:id="@+id/txt_title_two"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Mais Filmes"
+        android:text="@string/filmes_populares"
         android:textColor="@color/white"
-        android:textSize="18dp"
-        android:layout_margin="4dp"
+        android:textSize="@dimen/default_text_18_sp"
+        android:layout_margin="@dimen/default_size_4_dp"
         android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/recyclerViewHorizontal" />
@@ -44,8 +44,8 @@
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerViewVertical"
         android:layout_width="wrap_content"
-        android:layout_height="0dp"
-        android:layout_marginTop="4dp"
+        android:layout_height="@dimen/default_size_0_dp"
+        android:layout_marginTop="@dimen/default_size_4_dp"
         android:background="@color/black_50"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"

@@ -5,15 +5,15 @@
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
     android:backgroundTint="@color/black_80"
-    app:cardCornerRadius="2dp"
-    android:elevation="3dp">
+    app:cardCornerRadius="@dimen/default_size_2_dp"
+    android:elevation="@dimen/default_size_3_dp">
 
     <ImageView
         android:id="@+id/film_cover"
-        android:layout_width="130dp"
-        android:layout_height="180dp"
+        android:layout_width="@dimen/default_size_130_dp"
+        android:layout_height="@dimen/default_size_180_dp"
         android:src="@drawable/filme1"
         android:scaleType="centerCrop"
-        android:layout_margin="4dp"/>
+        android:layout_margin="@dimen/default_size_4_dp"/>
 
 </androidx.cardview.widget.CardView>

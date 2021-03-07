@@ -21,14 +21,32 @@
     <string name="emailSenhaIncorretos">E-mail ou senha incorretos!</string>
     <string name="semConexaoInternet">Sem conexão com a internet!</string>
     <string name="erroLogarUsuario">Erro ao logar usuário!</string>
+    <string name="email">Email</string>
+    <string name="senha">Senha</string>
+    <string name="senha_incorreta">Senha incorreta</string>
+    <string name="entrar">ENTRAR</string>
+    <string name="cadastrar">CADASTRAR</string>
+    <string name="precisa_de_ajuda">Precisa de ajuda?</string>
+    <string name="novo_por_aqui_inscreva_se_agora">Novo por aqui? Inscreva-se agora.</string>
 
     <!-- FilmsActivity-->
-    <string name="SpecSearchButton">Pesquisar por um pokémon</string>
-    <string name="searchButton">Search</string>
+    <string name="filmes_recomendados">Filmes Recomendados</string>
+    <string name="filmes_populares">Filmes Populares</string>
 
-    <!-- Details -->
+    <!-- SearchActivity-->
+    <string name="SpecSearchButton">Pesquisar por um filme</string>
+    <string name="searchButton">Search</string>
+    <string name="search">Search</string>
+
+    <!-- Detailsctivity -->
     <string name="details_description">O bruxo Geralt, um caçador de monstros mutante, luta para encontrar seu lugar em um mundo no qual as pessoas costumam ser mais perversas do que os animais.</string>
     <string name="like">Like</string>
     <string name="add_list">Add List</string>
+    <string name="mais_filmes">Mais Filmes</string>
+
+    <!-- FavoritesActivity -->
+    <string name="favoritos">Favoritos</string>
+
+
 
 </resources>

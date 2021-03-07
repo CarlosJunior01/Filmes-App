@@ -3,7 +3,11 @@
 
     <!-- Dimens redesgin -->
     <dimen name="default_size_0_dp">0dp</dimen>
+    <dimen name="default_size_1_dp">1dp</dimen>
+    <dimen name="default_size_2_dp">2dp</dimen>
+    <dimen name="default_size_3_dp">3dp</dimen>
     <dimen name="default_size_4_dp">4dp</dimen>
+    <dimen name="default_size_5_dp">5dp</dimen>
     <dimen name="default_size_8_dp">8dp</dimen>
     <dimen name="default_size_10_dp">10dp</dimen>
     <dimen name="default_size_11_dp">11dp</dimen>
@@ -11,26 +15,38 @@
     <dimen name="default_size_15_dp">15dp</dimen>
     <dimen name="default_size_16_dp">16dp</dimen>
     <dimen name="default_size_19_dp">19dp</dimen>
+    <dimen name="default_size_20_dp">20dp</dimen>
     <dimen name="default_size_21_dp">21dp</dimen>
     <dimen name="default_size_22_dp">22dp</dimen>
     <dimen name="default_size_24_dp">24dp</dimen>
     <dimen name="default_size_25_dp">25dp</dimen>
     <dimen name="default_size_27_dp">27dp</dimen>
+    <dimen name="default_size_30_dp">30dp</dimen>
+    <dimen name="default_size_32_dp">32dp</dimen>
     <dimen name="default_size_36_dp">36dp</dimen>
     <dimen name="default_size_56_dp">56dp</dimen>
     <dimen name="default_size_64_dp">64dp</dimen>
     <dimen name="default_size_80_dp">80dp</dimen>
+    <dimen name="default_size_100_dp">100dp</dimen>
     <dimen name="default_size_108_dp">108dp</dimen>
+    <dimen name="default_size_125_dp">125dp</dimen>
+    <dimen name="default_size_130_dp">130dp</dimen>
+    <dimen name="default_size_150_dp">150dp</dimen>
+    <dimen name="default_size_180_dp">180dp</dimen>
     <dimen name="default_size_152_dp">152dp</dimen>
     <dimen name="default_size_205_dp">205dp</dimen>
+    <dimen name="default_size_300_dp">300dp</dimen>
     <dimen name="default_size_400_dp">400dp</dimen>
     <dimen name="default_size_500_dp">500dp</dimen>
 
     <!-- Dimens text -->
     <dimen name="default_text_2_sp">2sp</dimen>
+    <dimen name="default_text_14_sp">14sp</dimen>
     <dimen name="default_text_15_sp">15sp</dimen>
     <dimen name="default_text_16_sp">16sp</dimen>
+    <dimen name="default_text_18_sp">18sp</dimen>
     <dimen name="default_text_19_sp">19sp</dimen>
     <dimen name="default_text_20_sp">20sp</dimen>
+    <dimen name="default_text_24_sp">24sp</dimen>
 
 </resources>
