@@ -14,7 +14,7 @@ class SlideActivity : IntroActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         screenMode()
-        VerifyUserLogin()
+        verifyUserLogin()
 
         isButtonBackVisible = false
         isButtonNextVisible = false
@@ -54,15 +54,15 @@ class SlideActivity : IntroActivity() {
         supportActionBar!!.hide()
     }
 
-    private fun VerifyUserLogin(){
+    private fun verifyUserLogin(){
         val userLogin = FirebaseAuth.getInstance().currentUser
 
         if(userLogin != null){
-            OpenFilmesActivity()
+            openMoviesActivity()
         }
     }
 
-    private fun OpenFilmesActivity(){
+    private fun openMoviesActivity(){
         val intent = Intent(this, FilmsActivity::class.java)
         startActivity(intent)
     }

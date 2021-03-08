@@ -15,7 +15,8 @@ import com.android.filmesapp.R
 import com.android.filmesapp.data.model.addFilms
 import com.android.filmesapp.databinding.ActivityFilmsBinding
 import com.android.filmesapp.presentation.authentication.FormLoginActivity
-import com.android.filmesapp.presentation.details.FilmsDetails
+import com.android.filmesapp.presentation.details.MoviesDetails
+import com.android.filmesapp.presentation.error.GenericErrorActivity
 import com.android.filmesapp.presentation.favorites.FavoritesActivity
 import com.android.filmesapp.presentation.search.SearchActivity
 import com.google.firebase.auth.FirebaseAuth
@@ -25,22 +26,30 @@ class FilmsActivity : AppCompatActivity() {
     private lateinit var binding: ActivityFilmsBinding
 
     lateinit var layoutManager: LinearLayoutManager
-    val viewModelFactory = MoviesViewModelFactory()
-    val viewModel: FilmsViewModel by lazy { ViewModelProvider(this, viewModelFactory).get(FilmsViewModel::class.java) }
+    private val viewModelFactory = MoviesViewModelFactory()
+    private val viewModel: FilmsViewModel by lazy { ViewModelProvider(this, viewModelFactory).get(
+            FilmsViewModel::class.java)}
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityFilmsBinding.inflate(layoutInflater)
         layoutManager = LinearLayoutManager(this)
         setContentView(binding.root)
+
+        setBottomNavigationView()
+        observeViewModel()
         setRecyclerView()
 
+    }
+
+    private fun observeViewModel() {
         viewModel.mutableLiveData.observe(this, {
-            it?.let { filmsList -> with(binding.recyclerViewVertical) {
+            it?.let { filmsList ->
+                with(binding.recyclerViewVertical) {
                     layoutManager = GridLayoutManager(this@FilmsActivity, 3)
                     setHasFixedSize(true)
                     adapter = MoviesAdapter(filmsList) { movies ->
-                        val intent = FilmsDetails.getStartIntent(
+                        val intent = MoviesDetails.getStartIntent(
                             this@FilmsActivity,
                             movies.overview, movies.poster_path
                         )
@@ -50,15 +59,34 @@ class FilmsActivity : AppCompatActivity() {
                 }
             }
         })
+        viewModel.errorLiveData.observe(this, { isError ->
+            isError?.let { if (isError == true) openGenericEror() }
+        })
         viewModel.getFilms()
+    }
 
+    private fun setRecyclerView() {
+
+        val recyclerFilmsHorizontal = binding.recyclerViewHorizontal
+        recyclerFilmsHorizontal.adapter = FilmsAdapterList(addFilms())
+        recyclerFilmsHorizontal.layoutManager =
+            LinearLayoutManager(applicationContext, LinearLayoutManager.HORIZONTAL, false)
+
+        recyclerFilmsHorizontal.addOnItemClickListener(object : OnItemClickListener {
+            override fun onItemClicked(position: Int, view: View) {
+                filmsDetail(position)
+            }
+        })
+    }
+
+    private fun setBottomNavigationView() {
         val bottomNavigationView = binding.bottomMenu
-        bottomNavigationView.setSelectedItemId(R.id.nav_home)
+        bottomNavigationView.selectedItemId = R.id.nav_home
         bottomNavigationView.setOnNavigationItemSelectedListener { item ->
             when (item.itemId) {
-                R.id.nav_search -> OpenSearchActivity()
-                R.id.nav_libs -> OpenFavoritActivity()
-                else -> OpenFilmsActivity()
+                R.id.nav_search -> openSearchActivity()
+                R.id.nav_libs -> openFavoritActivity()
+                else -> openFilmsActivity()
             }
         }
     }
@@ -73,51 +101,42 @@ class FilmsActivity : AppCompatActivity() {
         when (item.itemId) {
             R.id.signout -> {
                 FirebaseAuth.getInstance().signOut()
-                OpenLoginActivity()
+                openLoginActivity()
             }
         }
         return super.onOptionsItemSelected(item)
     }
 
-    private fun OpenLoginActivity() {
+    private fun openLoginActivity() {
         val intent = Intent(this, FormLoginActivity::class.java)
         startActivity(intent)
     }
 
-    private fun setRecyclerView() {
-
-        val recyclerFilmsHorizontal = binding.recyclerViewHorizontal
-        recyclerFilmsHorizontal.adapter = FilmsAdapterList(addFilms())
-        recyclerFilmsHorizontal.layoutManager =
-            LinearLayoutManager(applicationContext, LinearLayoutManager.HORIZONTAL, false)
-
-        recyclerFilmsHorizontal.addOnItemClickListener(object : OnItemClickListener {
-            override fun onItemClicked(position: Int, view: View) {
-                FilmsDetail(position)
-            }
-        })
-    }
-
-    private fun FilmsDetail(position: Int) {
-        val itent = Intent(this, FilmsDetails::class.java)
+    private fun filmsDetail(position: Int) {
+        val itent = Intent(this, MoviesDetails::class.java)
         itent.putExtra("selectedItem", position)
         startActivity(itent)
     }
 
-    private fun OpenSearchActivity(): Boolean {
+    private fun openSearchActivity(): Boolean {
         val itent = Intent(this, SearchActivity::class.java)
         startActivity(itent)
         return true
     }
 
-    private fun OpenFavoritActivity(): Boolean {
-        val itent = Intent(this, FavoritesActivity::class.java)
-        startActivity(itent)
+    private fun openFavoritActivity(): Boolean {
+        val intent = Intent(this, FavoritesActivity::class.java)
+        startActivity(intent)
         return true
     }
 
-    private fun OpenFilmsActivity(): Boolean {
+    private fun openFilmsActivity(): Boolean {
         return true
+    }
+
+    private fun openGenericEror() {
+        val intent = Intent(this, GenericErrorActivity::class.java)
+        startActivity(intent)
     }
 }
 

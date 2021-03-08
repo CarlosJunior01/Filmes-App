@@ -46,7 +46,24 @@
 
     <!-- FavoritesActivity -->
     <string name="favoritos">Favoritos</string>
+    <string name="poster_do_filme">poster do filme</string>
+    <string name="botao_voltar">botão voltar</string>
+    <string name="botao_cast">botão cast</string>
+    <string name="botao_iniciar_video">botao iniciar video</string>
+    <string name="bot_adicionar_filme_na_lista">botão adicionar filme na lista</string>
+    <string name="bot_curtir_filme">botão curtir filme</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="title_activity_generic_error">GenericErrorActivity</string>
+    <!-- Strings used for fragments for navigation -->
+    <string name="first_fragment_label">First Fragment</string>
+    <string name="second_fragment_label">Second Fragment</string>
+    <string name="next">Next</string>
+    <string name="previous">Previous</string>
 
+    <string name="hello_first_fragment">Hello first fragment</string>
+    <string name="hello_second_fragment">Hello second fragment. Arg: %1$s</string>
+    <string name="generic_error_message">Não foi possível acessar agora :/</string>
 
 
 </resources>

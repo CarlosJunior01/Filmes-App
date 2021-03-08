@@ -7,7 +7,7 @@ import com.android.filmesapp.data.model.MovieStorage
 import com.android.filmesapp.databinding.RecyclerItemBinding
 import com.bumptech.glide.Glide
 
-class FilmsAdapterList(val films: MutableList<MovieStorage>): RecyclerView.Adapter<FilmsAdapterList.FilmsViewHolder>(){
+class FilmsAdapterList(val movies: MutableList<MovieStorage>): RecyclerView.Adapter<FilmsAdapterList.FilmsViewHolder>(){
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): FilmsViewHolder {
         val binding = RecyclerItemBinding.inflate(LayoutInflater.from(parent.context), parent, false)
@@ -15,10 +15,10 @@ class FilmsAdapterList(val films: MutableList<MovieStorage>): RecyclerView.Adapt
     }
 
     override fun onBindViewHolder(holder: FilmsViewHolder, position: Int) {
-        holder.bindView(films[position])
+        holder.bindView(movies[position])
     }
 
-    override fun getItemCount() = films.size
+    override fun getItemCount() = movies.size
 
     class FilmsViewHolder( val binding: RecyclerItemBinding) : RecyclerView.ViewHolder(binding.root){
 

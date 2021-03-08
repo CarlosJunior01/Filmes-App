@@ -23,22 +23,20 @@ class FormRegisterActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         binding.btnEntrar.setOnClickListener {
-
             binding.edtEmail
-            CadastrarUsuario()
-
+            registerUser()
         }
     }
 
-    private fun CadastrarUsuario(){
+    private fun registerUser(){
         val email = binding.edtEmail.text.toString()
-        val senha = binding.edtSenha.text.toString()
+        val password = binding.edtSenha.text.toString()
         val message = binding.mensagem
 
-        if(email.isEmpty() || senha.isEmpty()){
-            message.setText(getString(R.string.coloqueEmailSenha))
+        if(email.isEmpty() || password.isEmpty()){
+            message.text = getString(R.string.coloqueEmailSenha)
         } else{
-            FirebaseAuth.getInstance().createUserWithEmailAndPassword(email, senha).addOnCompleteListener {
+            FirebaseAuth.getInstance().createUserWithEmailAndPassword(email, password).addOnCompleteListener {
                 if (it.isSuccessful){
                     Toast.makeText(this, "Cadastro Realizado Com Sucesso!", Toast.LENGTH_SHORT).show()
                     openLoginActivity()
@@ -46,23 +44,23 @@ class FormRegisterActivity : AppCompatActivity() {
             }.addOnFailureListener {
                 val error = it
 
-                when{
-                    error is FirebaseAuthWeakPasswordException ->  message.setText(getString(R.string.passwordException))
-                    error is FirebaseAuthUserCollisionException ->  message.setText(getString(R.string.collisionException))
-                    error is FirebaseNetworkException ->  message.setText(getString(R.string.networkException))
-                    error is FirebaseAuthInvalidCredentialsException ->  message.setText(getString(R.string.invalidCredentialsException))
-                    else ->  message.setText(getString(R.string.erroCadastrar))
+                when (error) {
+                    is FirebaseAuthWeakPasswordException -> message.text = getString(R.string.passwordException)
+                    is FirebaseAuthUserCollisionException -> message.text = getString(R.string.collisionException)
+                    is FirebaseNetworkException -> message.text = getString(R.string.networkException)
+                    is FirebaseAuthInvalidCredentialsException -> message.text = getString(R.string.invalidCredentialsException)
+                    else -> message.text = getString(R.string.erroCadastrar)
                 }
             }
         }
         hideKeyboard()
     }
 
-    fun Activity.hideKeyboard() {
+    private fun Activity.hideKeyboard() {
         hideKeyboard(currentFocus ?: View(this))
     }
 
-    fun Context.hideKeyboard(view: View) {
+    private fun Context.hideKeyboard(view: View) {
         val inputMethodManager =
             getSystemService(Activity.INPUT_METHOD_SERVICE) as InputMethodManager
         inputMethodManager.hideSoftInputFromWindow(view.windowToken, 0)

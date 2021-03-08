@@ -6,6 +6,7 @@
     android:background="@color/black_100">
 
     <ImageView
+        android:importantForAccessibility="no"
         android:id="@+id/img_logo"
         android:layout_width="@dimen/default_size_300_dp"
         android:layout_height="@dimen/default_size_150_dp"
@@ -16,6 +17,7 @@
         app:srcCompat="@drawable/logo" />
 
     <ProgressBar
+        android:importantForAccessibility="no"
         android:id="@+id/progressBar"
         style="?android:attr/progressBarStyle"
         android:layout_width="wrap_content"

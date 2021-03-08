@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".presentation.movies.FilmsActivity"
+    android:background="@color/white">
+
+    <ImageView
+        android:id="@+id/imgBackArrow"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/default_size_8_dp"
+        android:layout_marginTop="@dimen/default_size_16_dp"
+        android:contentDescription="@string/botao_voltar"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/ic_arrow_left_black" />
+
+    <TextView
+        android:id="@+id/txt_title_one"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/default_size_100_dp"
+        android:text="@string/generic_error_message"
+        android:textColor="@color/black_70"
+        android:textSize="@dimen/default_text_20_sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <View
+        android:id="@+id/divisor_one"
+        android:layout_width="wrap_content"
+        android:layout_height="@dimen/default_size_1_dp"
+        android:background="@color/light_gray"
+        android:layout_marginTop="@dimen/default_size_36_dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txt_title_one" />
+
+    <ImageView
+        android:id="@+id/img_phone_error"
+        android:layout_width="250dp"
+        android:layout_height="250dp"
+        android:layout_marginTop="@dimen/default_size_64_dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/divisor_one"
+        app:srcCompat="@drawable/mobile_phone_error" />
+
+    <TextView
+        android:id="@+id/txt_title_two"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/default_size_24_dp"
+        android:text="Algo deu errado."
+        android:textColor="@color/black_70"
+        android:textSize="@dimen/default_text_18_sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/img_phone_error" />
+
+    <TextView
+        android:id="@+id/txt_message"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/default_size_24_dp"
+        android:text="Por favor, tente novamente.."
+        android:textColor="@color/black_70"
+        android:textSize="@dimen/default_text_18_sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txt_title_two" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

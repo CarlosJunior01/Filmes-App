@@ -11,13 +11,18 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.FilmesApp">
-        <activity android:name=".presentation.favorites.FavoritesActivity"></activity>
+        <activity
+            android:name=".presentation.error.GenericErrorActivity"
+            android:label="@string/title_activity_generic_error"
+            android:theme="@style/Theme.FilmesApp.NoActionBar"></activity>
+        <activity android:name=".presentation.fragments.GenericErrorActivity" />
+        <activity android:name=".presentation.favorites.FavoritesActivity" />
         <activity android:name=".presentation.search.SearchActivity" />
         <activity
             android:name=".presentation.player.VideoActivity"
             android:screenOrientation="sensor" />
         <activity
-            android:name=".presentation.details.FilmsDetails"
+            android:name=".presentation.details.MoviesDetails"
             android:screenOrientation="portrait" />
         <activity
             android:name=".presentation.movies.FilmsActivity"

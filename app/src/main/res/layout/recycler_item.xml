@@ -9,6 +9,7 @@
     android:elevation="@dimen/default_size_3_dp">
 
     <ImageView
+        android:importantForAccessibility="no"
         android:id="@+id/film_cover"
         android:layout_width="@dimen/default_size_130_dp"
         android:layout_height="@dimen/default_size_180_dp"

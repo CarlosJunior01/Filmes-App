@@ -10,7 +10,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="@color/black_80"
-        tools:context=".presentation.details.FilmsDetails">
+        tools:context=".presentation.details.MoviesDetails">
 
         <ImageView
             android:id="@+id/imgCover"
@@ -18,6 +18,7 @@
             android:layout_height="@dimen/default_size_500_dp"
             android:scaleType="fitXY"
             android:src="@drawable/filme1"
+            android:contentDescription="@string/poster_do_filme"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
@@ -28,6 +29,7 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="@dimen/default_size_8_dp"
             android:layout_marginTop="@dimen/default_size_16_dp"
+            android:contentDescription="@string/botao_voltar"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:srcCompat="@drawable/ic_arrow_left" />
@@ -37,6 +39,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginEnd="@dimen/default_size_16_dp"
+            android:contentDescription="@string/botao_cast"
             app:layout_constraintBottom_toBottomOf="@+id/imgBackArrow"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="@+id/imgBackArrow"
@@ -46,6 +49,7 @@
             android:id="@+id/imgPlay"
             android:layout_width="@dimen/default_size_64_dp"
             android:layout_height="@dimen/default_size_64_dp"
+            android:contentDescription="@string/botao_iniciar_video"
             android:layout_marginTop="@dimen/default_size_24_dp"
             app:layout_constraintEnd_toStartOf="@+id/imgStar"
             app:layout_constraintStart_toEndOf="@+id/imgAddList"
@@ -56,6 +60,7 @@
             android:id="@+id/imgAddList"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:contentDescription="@string/bot_adicionar_filme_na_lista"
             android:layout_marginStart="@dimen/default_size_16_dp"
             app:layout_constraintBottom_toBottomOf="@+id/imgPlay"
             app:layout_constraintStart_toStartOf="parent"
@@ -63,6 +68,7 @@
             app:srcCompat="@drawable/icc_add_circle" />
 
         <TextView
+            android:importantForAccessibility="no"
             android:id="@+id/txtAddList"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -77,12 +83,14 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginEnd="@dimen/default_size_16_dp"
+            android:contentDescription="@string/bot_curtir_filme"
             app:layout_constraintBottom_toBottomOf="@+id/imgPlay"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="@+id/imgPlay"
             app:srcCompat="@drawable/ic_star_border" />
 
         <TextView
+            android:importantForAccessibility="no"
             android:id="@+id/txtLike"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"

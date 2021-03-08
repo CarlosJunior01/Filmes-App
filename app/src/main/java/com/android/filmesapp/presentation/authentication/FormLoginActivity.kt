@@ -20,49 +20,49 @@ class FormLoginActivity : AppCompatActivity() {
         binding = ActivityFormLoginBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        VerifyUserLogin()
+        verifyUserLogin()
 
         binding.btnEntrar.setOnClickListener {
-            LoginUser()
+            loginUser()
         }
 
         binding.txtCadastrar.setOnClickListener {
-            OpenRegisterActivity()
+            openRegisterActivity()
         }
 
     }
 
-    private fun VerifyUserLogin(){
+    private fun verifyUserLogin(){
         val userLogin = FirebaseAuth.getInstance().currentUser
 
         if(userLogin != null){
-            OpenFilmesActivity()
+            openMoviesActivity()
         }
     }
 
-    private fun OpenRegisterActivity(){
+    private fun openRegisterActivity(){
         val intent = Intent(this, FormRegisterActivity::class.java)
         startActivity(intent)
     }
 
-    private fun OpenFilmesActivity(){
+    private fun openMoviesActivity(){
         val intent = Intent(this, FilmsActivity::class.java)
         startActivity(intent)
     }
 
-    private fun LoginUser(){
+    private fun loginUser(){
         val email = binding.edtEmail.text.toString()
         val password = binding.edtSenha.text.toString()
         val message = binding.mensagem
 
         if(email.isEmpty() || password.isEmpty()){
-            message.setText(getString(R.string.preenchaTodosCampos))
+            message.text = getString(R.string.preenchaTodosCampos)
         }else{
-            AuthenticateUser()
+            authenticateUser()
         }
     }
 
-    private fun AuthenticateUser () {
+    private fun authenticateUser () {
         val email = binding.edtEmail.text.toString()
         val password = binding.edtSenha.text.toString()
         val message = binding.mensagem
@@ -70,15 +70,15 @@ class FormLoginActivity : AppCompatActivity() {
         FirebaseAuth.getInstance().signInWithEmailAndPassword(email, password).addOnCompleteListener{
             if(it.isSuccessful){
                 Toast.makeText(this, getString(R.string.loginEfetuadoSucesso), Toast.LENGTH_SHORT).show()
-                OpenFilmesActivity()
+                openMoviesActivity()
             }
         }.addOnFailureListener{
             val error = it
 
-            when{
-                error is FirebaseAuthInvalidCredentialsException ->  message.setText(getString(R.string.emailSenhaIncorretos))
-                error is FirebaseNetworkException ->  message.setText(getString(R.string.semConexaoInternet))
-                else ->  message.setText(getString(R.string.erroLogarUsuario))
+            when (error) {
+                is FirebaseAuthInvalidCredentialsException -> message.text = getString(R.string.emailSenhaIncorretos)
+                is FirebaseNetworkException -> message.text = getString(R.string.semConexaoInternet)
+                else -> message.text = getString(R.string.erroLogarUsuario)
             }
         }
     }

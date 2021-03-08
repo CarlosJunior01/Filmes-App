@@ -15,29 +15,32 @@ class FavoritesActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityFavoritesBinding.inflate(layoutInflater)
         setContentView(binding.root)
+        setBottomNavigationView()
+    }
 
+    private fun setBottomNavigationView() {
         val bottomNavigationView = binding.bottomMenu
-        bottomNavigationView.setSelectedItemId(R.id.nav_libs)
+        bottomNavigationView.selectedItemId = R.id.nav_libs
         bottomNavigationView.setOnNavigationItemSelectedListener { item ->
             when (item.itemId) {
-                R.id.nav_home -> OpenFilmsActivity()
-                R.id.nav_search -> OpenSearchActivity()
-                else -> OpenFavoritActivity()
+                R.id.nav_home -> openMoviesActivity()
+                R.id.nav_search -> openSearchActivity()
+                else -> openFavoriteActivity()
             }
         }
     }
 
-    private fun OpenFilmsActivity(): Boolean {
+    private fun openMoviesActivity(): Boolean {
         val itent = Intent(this, FilmsActivity::class.java)
         startActivity(itent)
         return true
     }
 
-    private fun OpenFavoritActivity(): Boolean {
+    private fun openFavoriteActivity(): Boolean {
         return true
     }
 
-    private fun OpenSearchActivity(): Boolean {
+    private fun openSearchActivity(): Boolean {
         val itent = Intent(this, SearchActivity::class.java)
         startActivity(itent)
         return true

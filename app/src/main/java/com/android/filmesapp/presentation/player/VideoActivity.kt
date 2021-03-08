@@ -9,22 +9,29 @@ import com.android.filmesapp.databinding.ActivityVideoBinding
 
 class VideoActivity : AppCompatActivity() {
     private lateinit var binding: ActivityVideoBinding
+    private val viewModel: PlayerViewModel by lazy {ViewModelProviders.of(this).get(PlayerViewModel::class.java)}
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityVideoBinding.inflate(layoutInflater)
         setContentView(binding.root)
-        screenMode()
 
+        observeViewModel()
+        getExtras()
+        screenMode()
+    }
+
+    private fun getExtras() {
         var itemSelected: Int? = null
         val extras = intent.extras
         if (extras != null) {
             val value = extras.getInt("selectedItem")
             itemSelected = value
         }
+        viewModel.getMovie(itemSelected)
+    }
 
-        val viewModel: PlayerViewModel = ViewModelProviders.of(this).get(PlayerViewModel::class.java)
-
+    private fun observeViewModel() {
         viewModel.mMoviePosition.observe(this, {
             it?.let { moviePosition ->
                 val videoView = binding.videoView
@@ -34,7 +41,6 @@ class VideoActivity : AppCompatActivity() {
                 videoView.start()
             }
         })
-        viewModel.getMovie(itemSelected)
     }
 
     private fun screenMode() {

@@ -14,31 +14,30 @@ import retrofit2.Response
 
 class SearchViewModel : ViewModel() {
 
-        val mutableLiveData = MutableLiveData<List<ResultsResponse>>()
-        val filmesLiveData: LiveData<List<ResultsResponse>> = mutableLiveData
+    val mutableLiveData = MutableLiveData<List<ResultsResponse>>()
+    val moviesLiveData: LiveData<List<ResultsResponse>> = mutableLiveData
 
-        fun getFilms(search: String) {
-            ApiService.service.getSearchFilms(query = search).enqueue(object :
-                Callback<ApiDataResponse> {
+    fun getFilms(search: String) {
+        ApiService.service.getSearchFilms(query = search).enqueue(object :
+            Callback<ApiDataResponse> {
 
-                override fun onResponse(
-                    call: Call<ApiDataResponse>,
-                    response: Response<ApiDataResponse>
-                ) {
-                    if (response.isSuccessful) {
-                        val listFilm: MutableList<MoviesApi> = mutableListOf()
+            override fun onResponse(
+                call: Call<ApiDataResponse>,
+                response: Response<ApiDataResponse>
+            ) {
+                if (response.isSuccessful) {
+                    val listFilm: MutableList<MoviesApi> = mutableListOf()
 
-                        response.body()?.let { response ->
-                            mutableLiveData.value = response.results
-                        }
-                    } else {
-                        Log.e("Erro API", response.message())
+                    response.body()?.let { response ->
+                        mutableLiveData.value = response.results
                     }
+                } else {
+                    Log.e("API ERROR", response.message())
                 }
-
-                override fun onFailure(call: Call<ApiDataResponse>, t: Throwable) {
-                    Log.e("Erro API ", t.message.toString())
-                }
-            })
-        }
+            }
+            override fun onFailure(call: Call<ApiDataResponse>, t: Throwable) {
+                t.message?.let { Log.e("API ERROR", it) }
+            }
+        })
     }
+}

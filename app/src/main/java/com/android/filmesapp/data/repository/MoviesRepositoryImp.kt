@@ -8,7 +8,7 @@ class MoviesRepositoryImp(private val service: MoviesApi) : MoviesRepository {
     override suspend fun getMoviesList(): List<Movies> {
 
         val list = mutableListOf<Movies>()
-        var limitMovies = 19
+        val limitMovies = 19
 
         val moviesType = service.getTopRatedMovies()
         for (index: Int in 0..limitMovies) {

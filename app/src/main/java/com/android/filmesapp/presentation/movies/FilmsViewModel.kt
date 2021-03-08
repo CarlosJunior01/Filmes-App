@@ -13,14 +13,17 @@ class FilmsViewModel(
     private val moviesRepository: MoviesRepository, private val dispatcher: CoroutineDispatcher = Dispatchers.IO) : ViewModel() {
     private val scope = CoroutineScope(dispatcher)
     val mutableLiveData: MutableLiveData<List<Movies>> = MutableLiveData()
+    var errorLiveData = MutableLiveData<Boolean>()
 
     fun getFilms() {
+
         scope.launch {
             try {
                 val response = moviesRepository.getMoviesList()
                 mutableLiveData.postValue(response)
 
             } catch (e: Exception) {
+                errorLiveData.value = true
             }
         }
     }

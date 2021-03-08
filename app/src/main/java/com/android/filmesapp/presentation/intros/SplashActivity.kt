@@ -15,7 +15,7 @@ import kotlinx.coroutines.launch
 class SplashActivity : AppCompatActivity() {
 
     companion object{
-        const val TRES_SEGUNDOS = 3000L
+        const val THREE_SECONDS = 3000L
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -24,7 +24,7 @@ class SplashActivity : AppCompatActivity() {
         fullscreenMode()
 
         CoroutineScope(Dispatchers.Main).launch {
-            delay(TRES_SEGUNDOS)
+            delay(THREE_SECONDS)
             openLoginActivity()
         }
     }
