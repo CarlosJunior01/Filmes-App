@@ -3,9 +3,15 @@
 *******
 App Android Nativo escrito em Kotlin, consumindo API de filmes TMDB e processando resposta com retrofit2 e moschi. Projetado com padrão de arquitetura MVVM com divisão de responsabilidades, separação de conceitos e desacoplamento de camadas.
 *******
-
+![MovieApp~1](https://user-images.githubusercontent.com/9430430/110244557-0b58c900-7f3e-11eb-829e-ff616c0b66cb.gif)
 *******
-### ESTRUTURA DOS PACOTES: MVVM ARCHITECTURE PATTERN:
+![MovieApp~3](https://user-images.githubusercontent.com/9430430/110245436-e7978200-7f41-11eb-9dc6-c02495ac65ab.gif)
+*******
+![Movie_01](https://user-images.githubusercontent.com/9430430/110243198-1f99c780-7f38-11eb-9b66-4c11b21b9810.jpg)
+*******
+![Movie_02](https://user-images.githubusercontent.com/9430430/110243200-21638b00-7f38-11eb-9e4a-e05c58115940.jpg)
+*******
+### ESTRUTURA DOS PACOTES: MVVM ARCHITECTURE PATTERN
 *******
 ### NETWORK LAYER
 > **DATA**
@@ -64,7 +70,7 @@ App Android Nativo escrito em Kotlin, consumindo API de filmes TMDB e processand
 * :ballot_box_with_check: **1º Ter o Android Studio Instalado na máquina e conexão com Internet**
 * >https://developer.android.com/studio
 
-* :ballot_box_with_check: **2º Cadastro API MARVEL:**
+* :ballot_box_with_check: **2º Cadastro API TMDB:**
 
 Será necessário ter cadastro na API TMDB para obtenção das chaves de autentificação.
 Para isso deverá fazer um cadastro e criação da conta no site oficial da API. Com essas chaves conseguimos fazer conexão com o servidor para obtenção dos dados.
@@ -80,23 +86,63 @@ Com as chaves em mãos, abra esse projeto no Android Studio, navegue até a past
 * :ballot_box_with_check: **4º Configuração bibliotecas no build.grandle**
 Abra o build.grandle (Module: app) e inclua as dependências específicas desse projeto e faça a sincronização "Sync Now"
 
-    //glide
+    dependencies {
+
+    implementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
+    implementation 'androidx.core:core-ktx:1.3.2'
+    implementation 'androidx.appcompat:appcompat:1.2.0'
+    implementation 'com.google.android.material:material:1.3.0'
+    implementation 'androidx.constraintlayout:constraintlayout:2.0.4'
+    implementation 'android.arch.lifecycle:extensions:1.1.1'
+
+    //Lottie
+    implementation 'com.airbnb.android:lottie:3.6.1'
+
+    //Glide
     implementation "com.github.bumptech.glide:glide:$glideVersion"
     annotationProcessor "com.github.bumptech.glide:compiler:$glideVersion"
-    
-    apply plugin: 'kotlin-kapt' 
-    
-    //slide intro
+
+    //Slide intro
     implementation 'com.heinrichreimersoftware:material-intro:2.0.0'
 
-    //squareup retrofit
+    //Paging
+    implementation 'androidx.paging:paging-runtime-ktx:2.1.2'
+
+    //Squareup retrofit
     implementation "com.squareup.retrofit2:retrofit:$retrofitVersion"
     implementation "com.squareup.retrofit2:converter-moshi:$retrofitVersion"
     implementation "com.squareup.moshi:moshi-kotlin:$moshiVersion"
     kapt "com.squareup.moshi:moshi-kotlin-codegen:$moshiVersion"
 
-    //squareup picasso
-    implementation 'com.squareup.picasso:picasso:2.71828'
+    //Coroutines
+    implementation "org.jetbrains.kotlinx:kotlinx-coroutines-core:$coroutines_android_version"
+    implementation "org.jetbrains.kotlinx:kotlinx-coroutines-android:$coroutines_android_version"
+
+    //RX Java
+    implementation "io.reactivex.rxjava2:rxjava:$rxJava_version"
+    implementation "io.reactivex.rxjava2:rxandroid:$rxJava_version"
+
+    //Dagger2
+    implementation "com.google.dagger:dagger-android:$dagger_Version"
+    implementation "com.google.dagger:dagger-android-support:$dagger_Version"
+    kapt "com.google.dagger:dagger-android-processor:$dagger_Version"
+
+    // Import the Firebase BoM
+    implementation platform('com.google.firebase:firebase-bom:26.3.0')
+
+    // Declare the dependency for the Firebase SDK for Google Analytics
+    implementation 'com.google.firebase:firebase-analytics-ktx'
+
+    // For example, declare the dependencies for Firebase Authentication and Cloud Firestore
+    implementation 'com.google.firebase:firebase-auth-ktx'
+    implementation 'com.google.firebase:firebase-firestore-ktx'
+
+    //Junit test
+    testImplementation 'junit:junit:4.13.2'
+    androidTestImplementation 'androidx.test.ext:junit:1.1.2'
+    androidTestImplementation 'androidx.test.espresso:espresso-core:3.3.0'
+
+}
     
 * :ballot_box_with_check: **5º Execução do projeto:**
 Após todas as configurações iniciais das chaves e libs o projeto está pronto e pode ser executado normalmente. 
@@ -171,9 +217,5 @@ Sem dúvida, o principal objetivo de escolher a arquitetura MVVM é abstrair as 
 
 **Conclusão:** 
 Para este projeto foi escolhido o padrão de Arquitetura MVVM justamente por fazer uso um padrão de divisão de responsabilidades, com separação de conceitos, e camadas diferentes, nele temos o desacoplamento da camada de "Network" da camada de "Apresentação", facilitando assim a organização, clareza e entendimento de cada parte do projeto, facilitando e  possibilitando o trabalho em diferentes frentes de camadas desacopladas em um projeto mais organizado e flexível.
-
-
-
-
 
 
