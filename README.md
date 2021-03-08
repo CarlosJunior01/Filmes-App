@@ -11,6 +11,8 @@ App Android Nativo escrito em Kotlin, consumindo API de filmes TMDB e processand
 *******
 ![Movie_02](https://user-images.githubusercontent.com/9430430/110243200-21638b00-7f38-11eb-9e4a-e05c58115940.jpg)
 *******
+![QRCODE](https://user-images.githubusercontent.com/9430430/110317195-8f688a80-7fea-11eb-812a-7befe286992c.jpg)
+*******
 ### ESTRUTURA DOS PACOTES: MVVM ARCHITECTURE PATTERN
 *******
 ### NETWORK LAYER
