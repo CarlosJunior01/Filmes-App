@@ -69,7 +69,7 @@ App Android Nativo escrito em Kotlin, consumindo serviços web da API de filmes 
 *******
 **Requisitos:**
 
-* :ballot_box_with_check: **1º Ter o Android Studio Instalado na máquina e conexão com Internet**
+* :ballot_box_with_check: **1º Ter o Android Studio 4.1.1 Instalado na máquina e conexão com Internet**
 * >https://developer.android.com/studio
 
 * :ballot_box_with_check: **2º Cadastro API TMDB:**
@@ -78,12 +78,12 @@ Será necessário ter cadastro na API TMDB para obtenção das chaves de autenti
 Para isso deverá fazer um cadastro e criação da conta no site oficial da API. Com essas chaves conseguimos fazer conexão com o servidor para obtenção dos dados.
 Pois passaremos os parâmetros para a API e receberemos como resposta o retorno dos dados de resultado dessa requisição.
 
-**API MTDB:**
+**API TMDB:**
 > https://www.themoviedb.org/
 
 * :ballot_box_with_check: **3º Configuração das chaves**
 
-Com as chaves em mãos, abra esse projeto no Android Studio, navegue até a pasta service e abra a ChavesApi e inclua suas chaves obtidas no site da API TMDB.
+Com a chave em mãos, abra esse projeto no Android Studio, navegue até a pasta service e abra a classe ApiKey.kt e inclua sua chave obtidas no site da API TMDB.
 
 * :ballot_box_with_check: **4º Configuração bibliotecas no build.grandle**
 Abra o build.grandle (Module: app) e inclua as dependências específicas desse projeto e faça a sincronização "Sync Now"
