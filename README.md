@@ -1,7 +1,7 @@
 *******
 ### FILMES TMDB
 *******
-App Android Nativo escrito em Kotlin, consumindo API de filmes TMDB e processando resposta com retrofit2 e moschi. Projetado com padrão de arquitetura MVVM com divisão de responsabilidades, separação de conceitos e desacoplamento de camadas.
+App Android Nativo escrito em Kotlin, consumindo serviços web da API de filmes TMDB, processando resposta com retrofit2, coroutines para tratamento de concorrência e integração ao Firebase Authentication para reconhecimento da identidade do usuário. Projetado com padrão de arquitetura MVVM com divisão de responsabilidades, separação de conceitos e desacoplamento de camadas.
 *******
 ![MovieApp~1](https://user-images.githubusercontent.com/9430430/110244557-0b58c900-7f3e-11eb-829e-ff616c0b66cb.gif)
 *******
