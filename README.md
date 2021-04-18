@@ -1,6 +1,8 @@
 *******
 ### FILMES TMDB
 *******
+![GitHub top language](https://img.shields.io/github/languages/top/Carlosjr01/Filmes-App) [![MVVM](https://img.shields.io/badge/Architecture-MVVM-green)](https://www.youtube.com/watch?v=tIPxSWx5qpk) [![coroutines](https://img.shields.io/badge/Coroutines-Asynchronous-red)](https://developer.android.com/kotlin/coroutines) [![Kotlin-Android-Extensions ](https://img.shields.io/badge/Kotlin--Android--Extensions-plugin-red.svg)](https://kotlinlang.org/docs/tutorials/android-plugin.html) ![API](https://img.shields.io/badge/API-TMDB-lightgrey) ![GitHub repo size](https://img.shields.io/github/repo-size/Carlosjr01/Filmes-App)
+
 App Android Nativo escrito em Kotlin, consumindo serviços web da API de filmes TMDB, processando resposta com retrofit2, coroutines para tratamento de concorrência e integração ao Firebase Authentication para reconhecimento da identidade do usuário. Projetado com padrão de arquitetura MVVM com divisão de responsabilidades, separação de conceitos e desacoplamento de camadas.
 *******
 ![MovieApp~1](https://user-images.githubusercontent.com/9430430/110244557-0b58c900-7f3e-11eb-829e-ff616c0b66cb.gif)
